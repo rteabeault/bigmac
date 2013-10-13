@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+$:.push File.expand_path("../../lib", __FILE__)
+require 'bigmac'
+
+begin
+  BigMac::CLI.start
+rescue BigMac::BigMacError => e
+  BigMac.ui.error e.message
+end

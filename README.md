@@ -1,4 +1,4 @@
-# Bigmac
+# BigMac
 
 TODO: Write a gem description
 

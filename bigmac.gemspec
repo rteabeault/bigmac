@@ -5,11 +5,11 @@ require 'bigmac/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "bigmac"
-  spec.version       = Bigmac::VERSION
+  spec.version       = BigMac::VERSION
   spec.authors       = ["Russell Teabeault"]
   spec.email         = ["rteabeault@gmail.com"]
-  spec.description   = %q{Bootstrap your mac with Bigmac.}
-  spec.summary       = %q{Bootstrap your mac with Bigmac.}
+  spec.description   = %q{Bootstrap your mac with bigmac}
+  spec.summary       = %q{Bootstrap your mac with bigmac}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,13 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "fakefs"
+  spec.add_development_dependency "webmock", "~> 1.11.0"
+
+
+  spec.add_dependency "thor", "~> 0.18.1"
+  spec.add_dependency "mixlib-shellout", "~> 1.1.0"
+  spec.add_dependency "rest-client", "~> 1.6.7"
+  spec.add_dependency "json_pure", "~> 1.8.0"
 end

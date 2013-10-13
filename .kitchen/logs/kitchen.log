@@ -1,0 +1,25 @@
+E, [2013-06-08T15:27:50.133258 #36250] ERROR -- Kitchen: ------Exception-------
+E, [2013-06-08T15:27:50.133365 #36250] ERROR -- Kitchen: Class: Kitchen::UserError
+E, [2013-06-08T15:27:50.133395 #36250] ERROR -- Kitchen: Message: Kitchen YAML file /Users/rteabeault/projects/bigmac/.kitchen.yml does not exist.
+E, [2013-06-08T15:27:50.133420 #36250] ERROR -- Kitchen: ------Backtrace-------
+E, [2013-06-08T15:27:50.133443 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/loader/yaml.rb:59:in `read'
+E, [2013-06-08T15:27:50.133466 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/config.rb:190:in `data'
+E, [2013-06-08T15:27:50.133488 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/config.rb:70:in `suites'
+E, [2013-06-08T15:27:50.133511 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/config.rb:117:in `build_instances'
+E, [2013-06-08T15:27:50.133534 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/config.rb:76:in `instances'
+E, [2013-06-08T15:27:50.133556 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/cli.rb:311:in `get_filtered_instances'
+E, [2013-06-08T15:27:50.133579 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/cli.rb:290:in `parse_subcommand'
+E, [2013-06-08T15:27:50.133601 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/cli.rb:54:in `list'
+E, [2013-06-08T15:27:50.133624 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/thor-0.18.1/lib/thor/command.rb:27:in `run'
+E, [2013-06-08T15:27:50.133647 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/thor-0.18.1/lib/thor/invocation.rb:120:in `invoke_command'
+E, [2013-06-08T15:27:50.133669 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/cli.rb:255:in `invoke_task'
+E, [2013-06-08T15:27:50.133692 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/thor-0.18.1/lib/thor.rb:363:in `dispatch'
+E, [2013-06-08T15:27:50.133714 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/thor-0.18.1/lib/thor/base.rb:439:in `start'
+E, [2013-06-08T15:27:50.133741 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/bin/kitchen:13:in `block in <top (required)>'
+E, [2013-06-08T15:27:50.133764 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/lib/kitchen/errors.rb:78:in `with_friendly_errors'
+E, [2013-06-08T15:27:50.133787 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/gems/test-kitchen-1.0.0.alpha.7/bin/kitchen:13:in `<top (required)>'
+E, [2013-06-08T15:27:50.133809 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/bin/kitchen:19:in `load'
+E, [2013-06-08T15:27:50.133832 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/bin/kitchen:19:in `<main>'
+E, [2013-06-08T15:27:50.133854 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/bin/ruby_noexec_wrapper:14:in `eval'
+E, [2013-06-08T15:27:50.133877 #36250] ERROR -- Kitchen: /Users/rteabeault/.rvm/gems/ruby-1.9.3-p392/bin/ruby_noexec_wrapper:14:in `<main>'
+E, [2013-06-08T15:27:50.133900 #36250] ERROR -- Kitchen: ----------------------
