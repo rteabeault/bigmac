@@ -15,6 +15,7 @@ module BigMac
     def initialize(*args)
       super(*args)
       @options = options.dup
+      BigMac.ui.debug = true if @options["debug"]
     end
 
     class_option :version, 
@@ -22,18 +23,25 @@ module BigMac
       :aliases => ['-V'],
       :desc => "Show program version"
 
+    class_option :debug, 
+      :type => :boolean, 
+      :aliases => ['-d'],
+      :desc => "Print debug information"
+
     desc 'version', 'Display bigmac version.'
     def version
       BigMac.ui.info "#{BigMac.executable_name} #{BigMac::VERSION}"
     end
 
-    option :recipes, :type => :array, :aliases => '-r'
-    option :roles, :type => :array, :aliases => '-l'
+    option :recipes, :type => :array, :aliases => '-r', :default => []
+    option :roles, :type => :array, :aliases => '-l', :default => []
     option :sudo, :type => :boolean, :default => false, :aliases => '-s'
     option :machine_type, :type => :string, :default => :shared, :aliases => '-m'
     option :private_github, :type => :boolean, :default => false, :aliases => '-p'
     desc 'install <REPOSITORY|RECIPE_NAME>', 'Install a recipe or role'
     def install(id = nil)
+      BigMac.ui.debug "Here is a debug message"
+
       if options[:sudo]
         sudoers = Sudoers.new
         sudoers.add_passwordless_sudo
@@ -45,7 +53,7 @@ module BigMac
         options[:github_password] = BigMac.ui.ask("github password:", :echo => false)
       end
 
-      Prerequisites.verify
+      # Prerequisites.verify
 
       source = ProjectSource.from_id(id, options)
       Installer.converge(source, BigMac.vendor_cookbooks, options)

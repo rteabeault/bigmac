@@ -15,7 +15,6 @@ module BigMac
 
   class GitCloneError < BigMacError
     def initialize(url, stderr)
-      super
       @url = url
       @stderr = stderr
     end
@@ -24,6 +23,20 @@ module BigMac
       <<-MSG.gsub /^\s+/, ""
         "Failed to clone git repository #{@url}"
         "If this is a private repository you should specify the -p option."
+        #{@stderr}
+      MSG
+    end
+  end
+
+  class GitPullError < BigMacError
+    def initialize(path, stderr)
+      @path = path
+      @stderr = stderr
+    end
+
+    def to_s
+      <<-MSG.gsub /^\s+/, ""
+        "Failed to pull git repository #{@path}"
         #{@stderr}
       MSG
     end

@@ -2,6 +2,8 @@ module BigMac
   class Berks
     BERKS_COMMAND = '/opt/chef/embedded/bin/berks'
     class << self
+      include Mixin::ShellOut
+
       def install(berksfile, path)
         berksfile_home = File.dirname(berksfile)
         BigMac.ui.banner("Running berkshelf...Ermagherd!")

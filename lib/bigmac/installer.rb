@@ -9,8 +9,8 @@ module BigMac
       def converge(source, cookbook_path, options)
         with_github_in_keychain(options) do 
           project       = source.download
-          cookbook_path = project.install_dependencies(cookbook_path)
           roles_path    = project.roles_path
+          project.install_dependencies(cookbook_path)
 
           solo_rb = write_solo_rb(cookbook_path, roles_path)
           node_file = write_node_file(options, project.default_runlist)
@@ -35,9 +35,9 @@ module BigMac
         end
       end
 
-      def write_node_file(options, run_list)
+      def write_node_file(options, default_runlist)
         File.open("#{BigMac.cache_dir}/node_file", 'w+') do |file|
-          file << node_file_contents(options)
+          file << node_file_contents(options, default_runlist)
         end
       end
 
@@ -51,7 +51,7 @@ module BigMac
         solo.join("\n")
       end
 
-      def node_file_contents(run_list, options)
+      def node_file_contents(options, default_runlist)
         run_list = []
         options[:recipes].each { |recipe| run_list << "recipe[#{recipe}]" }
         options[:roles].each { |recipe| run_list << "role[#{recipe}]" }
@@ -59,7 +59,7 @@ module BigMac
         run_list << default_runlist if run_list.empty?
 
         JSON.generate({
-          "run_list" => run_list.inspect
+          "run_list" => run_list
         })
       end
     end

@@ -3,7 +3,7 @@ require 'fileutils'
 
 module BigMac
   class ProjectSource
-    DEFAULT_REPO_ID = "rteabeault/cattery"
+    DEFAULT_REPO_ID = "rteabeault/mccafe"
     DEFAULT_REPO_URL = "https://github.com/#{DEFAULT_REPO_ID}"
 
     class << self

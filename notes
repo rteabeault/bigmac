@@ -1,44 +1,58 @@
+Project structure
+======================================
+A project that contains a .bigmac directory.
+This directory should contain a Berksfile. And can 
+itself be a cookbook or can contain a cookbooks directory.
+A roles directory should contain at least a default role
+which will be run if no role is specified.
+
+root
+  .bigmac
+    Berksfile
+    roles
+    cookbooks    
+
+A project that contains at least a Berksfile and
+a roles directory with a default role.
+
+root
+  Berksfile
+  roles
+  cookbooks
+
+root
+  Berksfile
+  metadata.rb
+  recipes
+======================================
+
 Must work on a default OSX install.
   - No GCC
   - Ruby 1.8.7
 
-# Look in the default bigmac-osx repo and install chrome
-bigmac install chrome
-
-# Look in the repo RallySoftware/dev-setup and run the default recipe
+# Look in the repo RallySoftware/dev-setup and run the default role
 bigmac install RallySoftware/dev-setup
 
-# Look in the repo RallySoftware/dev-setup and run the role my_role
-bigmac install RallySoftware/dev-setup --role my_role
+# Look in the repo RallySoftware/dev-setup and run the foo role
+bigmac install RallySoftware/dev-setup --role foo
 
-# Look in the repo RallySoftware/dev-setup and run the recipe my_recipe
-bigmac install RallySoftware/dev-setup --recipe my_recipe
+# Look in the repo RallySoftware/dev-setup and run the recipe foo. This
+# assumes that dev-setup is a cookbook.
+bigmac install RallySoftware/dev-setup::foo
 
-# Look in the repo RallySoftware/dev-setup and run the default recipe.  Since the 
+# Look in the repo RallySoftware/dev-setup and run the default role.  Since the 
 # repository is private pass the username and you will be prompted for the password
 bigmac install --username rteabeault RallySoftware/dev-setup
 
-# Indicate that this is a private machine.  Default is shared.
+# Indicate that this is a private machine. Default is shared. This will set a
+# node[:machine_type] = :private
 bigmac install --private RallySoftware/dev-setup
 
-# Indicate that this is a shared machine.  
+# Indicate that this is a shared machine. This will set a
+# node[:machine_type] = :shared
 bigmac install --shared RallySoftware/dev-setup
 
-# If the repo doesn't have a Berksfile then look for a ./bigmac/Berksfile
-# in the repo. Use that Berksfile to do a berks install and then run the default role
-# called default.rb
-bigmac install RallySoftware/zuul
-
-# If the repo doesn't have a Berksfile then look for a ./bigmac/Berksfile
-# in the repo. Use that Berksfile to do a berks install and then run the role
-# my_role found in ./bigmac/roles/my_role.rb
-bigmac install RallySoftware/zuul --role my_role
-
-# If the repo doesn't have a Berksfile then look for a ./bigmac/Berksfile
-# in the repo. Use that Berksfile to do a berks install and then run the recipe
-# my_recipe found in ./bigmac/recipes/my_recipe.rb
-bigmac install RallySoftware/zuul --recipe my_recipe
-
+=======================================
 # Curl the raw contents of a file
 curl -H "Accept: application/vnd.github.raw" -u rteabeault https://api.github.com/repos/RallySoftware/osx-setup/contents/go
 

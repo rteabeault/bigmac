@@ -4,7 +4,6 @@ require 'pathname'
 
 module BigMac
   class GithubSource < ProjectSource
-    GIT_COMMAND = '/usr/bin/git'
 
     attr_reader :github_api
     attr_reader :destination
@@ -24,7 +23,11 @@ module BigMac
       files = github_api.download_path('.bigmac', destination)
 
       if files.empty?
-        Git.clone(url, destination)
+        if File.exist? destination
+          Git.pull(destination)
+        else
+          Git.clone(url, destination)
+        end
       end
 
       Project.from_path(destination)

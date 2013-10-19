@@ -1,5 +1,6 @@
 module BigMac
   module UI
+
     def mute!
       @mute = true
     end
@@ -15,7 +16,7 @@ module BigMac
     end
 
     def debug(message, color = :yellow)
-      # return unless debug?
+      return unless debug?
       
       say("      #{message}", color)
     end
@@ -30,6 +31,14 @@ module BigMac
       return if quiet? 
 
       say("----> #{message}", color)
+    end
+
+    def debug=(debug)
+      @debug = debug
+    end
+
+    def debug?
+      @debug
     end
   end
 end

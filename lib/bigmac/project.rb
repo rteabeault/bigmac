@@ -77,16 +77,17 @@ module BigMac
 
     def default_runlist
       if default_role?
+        'role[default]'
       elsif default_recipe?
       end
     end
 
     def roles_path
-      raise "Abstract"
+      File.join(path, 'roles')
     end
 
     def default_role?
-      false
+      File.exist?(File.join(roles_path, 'default.rb'))
     end
 
     def default_recipe?
@@ -94,7 +95,12 @@ module BigMac
     end
 
     def install_dependencies(to)
-      # run berks install
+      berksfile = File.join(path, 'Berksfile')
+      unless File.exist? berksfile
+        raise "Berksfile not found in repository" 
+      end
+
+      Berks.install(berksfile, to)
     end
   end
 end
