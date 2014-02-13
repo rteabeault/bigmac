@@ -7,8 +7,8 @@ module BigMac
   autoload :CLI,                 'bigmac/cli'
   autoload :UI,                  'bigmac/ui'
   autoload :Mixin,               'bigmac/mixins'
-  autoload :Sudoers,             'bigmac/sudoers'
   autoload :GithubKeychain,      'bigmac/util/github_keychain'
+  autoload :OS,                  'bigmac/os'
   autoload :Prerequisites,       'bigmac/prerequisites'
   autoload :ProjectSource,       'bigmac/project_source'
   autoload :GitSource,           'bigmac/sources/git_source'
@@ -34,7 +34,7 @@ module BigMac
   if BUNDLER_PRESENT
     require 'bundler'
   end
-  
+
   class << self
     def executable_name
       File.basename($PROGRAM_NAME)

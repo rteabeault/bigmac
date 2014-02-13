@@ -1,18 +1,15 @@
 module BigMac
   module Prerequisites
-    autoload :CommandLineTools, 'bigmac/prerequisites/clt'
+    autoload :OSX, 'bigmac/prerequisites/osx'
     autoload :Chef, 'bigmac/prerequisites/chef'
     autoload :Berkshelf, 'bigmac/prerequisites/berkshelf'
 
     class << self
-      def verify
-        [Chef, CommandLineTools, Berkshelf].each do |prereq|
-          prereq.new.verify
-        end
-      end
     end
 
     class Prerequisite
+      include Mixin::ShellOut
+
       attr_reader :name, :version_cmd, :version_regex, :install_cmd
 
       def initialize(name)
@@ -24,9 +21,9 @@ module BigMac
       end
 
       def version
-        begin 
+        begin
          shell_out(version_cmd).stdout.match(version_regex)
-         $1      
+         $1
         rescue Errno::ENOENT
           nil
         end
@@ -40,12 +37,12 @@ module BigMac
         raise "Installation was not successful" unless installed?
       end
 
-      def verify
-        BigMac.ui.banner("Checking prerequisite #{name}")
+      def verify!
+        BigMac.ui.banner("Checking prerequisite [#{name}]")
         if installed?
-          BigMac.ui.info("#{name}: #{version} already installed")
+          BigMac.ui.info("[#{name}] with version [#{version}] already installed")
         else
-          BigMac.ui.info("Installing #{name}...")
+          BigMac.ui.info("Installing [#{name}]...")
           install
         end
 

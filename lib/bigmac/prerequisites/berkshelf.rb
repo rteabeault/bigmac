@@ -1,15 +1,13 @@
 module BigMac
   module Prerequisites
     class Berkshelf < Prerequisite
-      include Mixin::ShellOut
-
       VERSION_CMD = '/opt/chef/embedded/bin/berks --version'
-      INSTALL_CMD = '/opt/chef/embedded/bin/gem install berkshelf --no-ri --no-rdoc'
+      INSTALL_CMD = '/opt/chef/embedded/bin/gem install berkshelf --pre --no-ri --no-rdoc'
 
       def initialize
-        super("Berkshelf")
+        super("Berkshelf (Ermagherd!)")
         @version_cmd = VERSION_CMD
-        @version_regex = /Berkshelf\s\((.*)\)/
+        @version_regex = /(.*)/
         @install_cmd = INSTALL_CMD
       end
     end
